@@ -632,6 +632,8 @@ int LinearFocusAlgorithm::setupSecondPass(int position, double value, double mar
     inFirstPass = false;
     solutionPending = false;
     secondPassStartIndex = values.size();
+    if ( margin < 0 )
+    	margin = defaultMargin ;
 
     // Arbitrarily go back "margin" steps above the best position.
     // Could be a problem if backlash were worse than that many steps.
