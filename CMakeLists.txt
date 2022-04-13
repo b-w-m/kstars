@@ -2,7 +2,7 @@ PROJECT(kstars CXX C)
 set (KStars_VERSION_MAJOR 3)
 set (KStars_VERSION_MINOR 5)
 set (KStars_VERSION_REVISION 8)
-set (KSTARS_BUILD_RELEASE "Stable")
+set (KSTARS_BUILD_RELEASE "bwm-focus-experiment")
 set (CMAKE_CXX_STANDARD 14)
 
 set(QT_MIN_VERSION 5.9.0)

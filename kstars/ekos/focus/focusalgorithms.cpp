@@ -101,7 +101,7 @@ class LinearFocusAlgorithm : public FocusAlgorithmInterface
 
         // Sets the internal state for re-finding the minimum, and returns the requested next
         // position to sample.
-        int setupSecondPass(int position, double value, double margin = 2.0);
+        int setupSecondPass(int position, double value, double margin = -1.0);
 
         // Used in the 2nd pass. Focus is getting worse. Requires several consecutive samples getting worse.
         bool gettingWorse();
@@ -159,6 +159,8 @@ class LinearFocusAlgorithm : public FocusAlgorithmInterface
         // When we're near done, but the HFR just got worse, we may retry the current position
         // in case the HFR value was noisy.
         int retryNumber = 0;
+        // default margin for computing how far to move to start second pass
+        double defaultMargin ;
 
         // Keep the solution-pending position/value for the status messages.
         double solutionPendingValue = 0;
@@ -208,6 +210,7 @@ void LinearFocusAlgorithm::computeInitialPosition()
     numPolySolutionsFound = 0;
     numRestartSolutionsFound = 0;
     secondPassStartIndex = -1;
+    defaultMargin = std::min(2.0, params.initialStepSize / 2.0 ) ;
 
     qCDebug(KSTARS_EKOS_FOCUS)
             << QString("Linear: v3.3. 1st pass. Travel %1 initStep %2 pos %3 min %4 max %5 maxIters %6 tolerance %7 minlimit %8 maxlimit %9 init#steps %10")
