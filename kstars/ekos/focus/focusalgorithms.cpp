@@ -210,7 +210,7 @@ void LinearFocusAlgorithm::computeInitialPosition()
     numPolySolutionsFound = 0;
     numRestartSolutionsFound = 0;
     secondPassStartIndex = -1;
-    defaultMargin = std::min(2.0, params.initialStepSize / 2.0 ) ;
+    defaultMargin = std::min(2.0, params.initialOutwardSteps / 2.0 ) ;
 
     qCDebug(KSTARS_EKOS_FOCUS)
             << QString("Linear: v3.3. 1st pass. Travel %1 initStep %2 pos %3 min %4 max %5 maxIters %6 tolerance %7 minlimit %8 maxlimit %9 init#steps %10")
